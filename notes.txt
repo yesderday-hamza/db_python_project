@@ -99,6 +99,26 @@ for ip_address_manager.py :
         
 
 
+for device_manager :
+    -the _device_joins link all the primary keys of the tables in the db
+    -for get_devices : the sql query was formatted that way incase the user inputs a device type
+    -for search_devices : ithe input could be anything from a device name to an ip 
+        (it doesn't have to be complete)
+    -for get_device_types : it gets how many devices there are of each type
+    -for update_device : it chages a device's name and type (the ip is not modified)
+                         there was no check row in run command because you can change the device
+                         name without changing it's type and vise versa
+    -for move_device : it gives a device a new ip
+                       device is a dict from get_devices(), new_ip is a dict from get_ip_by_address()
+                       the old ip changes it's status into available
+                       the new ip become allocated
+                       the device has now a new ip address
+    -for delete_device :
+        it removes a device and makes the status of its ip available
+        we already wrote a similar function in ip_address_manger so we re use it (release_ip())
+
+
+
 
 for main.py : 
     -the ask_int is for what the user choses in the menu
@@ -110,7 +130,10 @@ for main.py :
     -now because we added subnets into the equation the menu will be overwhelming so
         we are going to create a main menu that has the main tables(vlans,subnets...)
         and a sub menu for each
-
+    -lookup_ip : validates user input as ipv4 and fetches info about the address from the DB
+    -pick_next_available : asks for subnet and returns the first available ip
+    -adding a device is allocate() in the IP section: 
+        a device can'texist without an IP, so both are created together
 
 
 

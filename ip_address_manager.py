@@ -36,7 +36,6 @@ def get_ip_by_address(ip_text):
 
 
 def get_next_available(subnet_id):
-    """The lowest available IP of a subnet (full details), or None if full."""
     rows = run_query(
         IP_DETAIL_SQL
         + """
